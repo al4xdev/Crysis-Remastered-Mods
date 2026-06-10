@@ -8,7 +8,7 @@ A collection of lightweight gameplay and visual modifications for *Crysis Remast
    * Enables a native crouch toggle (requires setting `cl_crouchToggle = 1` in `autoexec.cfg`).
    * Custom modern layout mapping:
      * Crouch Toggle: `C`
-     * Prone/Deitar: `LCTRL`
+     * Prone: `LCTRL` (Left Control)
      * Armor Mode: `Mouse3` (Middle Click)
      * Cloak Mode: `T`
      * Lean Left / Right: `Q` / `E` (standard hold)

@@ -7,7 +7,7 @@ This mod modernizes the layout of Crysis Remastered to feel more agile and inlin
 - **Toggle Crouch:** Switches Crouch from hold-to-toggle natively.
 - **Modern Key Layout:**
   - Crouch (Toggle): `C`
-  - Prone/Deitar: `LCTRL` (Left Control)
+  - Prone: `LCTRL` (Left Control)
   - Armor Mode (Quick Activate): `Mouse3` (Middle Click / Scroll Click)
   - Cloak Mode (Quick Activate): `T`
   - Leaning (Hold): `Q` and `E` (standard hold behavior to lean around corners)
