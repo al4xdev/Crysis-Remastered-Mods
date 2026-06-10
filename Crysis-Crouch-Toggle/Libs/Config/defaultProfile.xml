@@ -1,0 +1,200 @@
+<profile version="56">
+	<actionmap name="debug">
+		<action keyboard="f4" name="godmode" noModifiers="1" onPress="1" />
+		<action keyboard="np_2" name="ulammo" noModifiers="1" onPress="1" />
+		<action keyboard="f3" name="flymode" noModifiers="1" onPress="1" />
+		<action keyboard="7" name="debug" onPress="1" />
+		<action keyboard="f1" name="thirdperson" noModifiers="1" onPress="1" />
+		<action keyboard="backslash" name="debug_ag_step" onPress="1" />
+		<action keyboard="np_enter" name="tweak_enable" onPress="1" />
+		<action keyboard="np_8" name="tweak_up" onPress="1" />
+		<action keyboard="np_2" name="tweak_down" onPress="1" />
+		<action keyboard="np_4" name="tweak_left" onPress="1" />
+		<action keyboard="np_6" name="tweak_right" onPress="1" />
+		<action keyboard="np_add" name="tweak_inc" onPress="1" />
+		<action keyboard="np_subtract" name="tweak_dec" onPress="1" />
+	</actionmap>
+	<actionmap name="multiplayer">
+		<action keyboard="f5" name="radio_group_0" onPress="1" />
+		<action keyboard="f6" name="radio_group_1" onPress="1" />
+		<action keyboard="f7" name="radio_group_2" onPress="1" />
+		<action keyboard="f8" name="radio_group_3" onPress="1" />
+	</actionmap>
+	<actionmap name="singleplayer">
+		<!-- <action consoleCmd="1" keyboard="f7" name="sv_port = 12" onPress="1" /> -->
+		<!-- <action consoleCmd="1" keyboard="f8" name="sv_port = 14" onPress="1" /> -->
+	</actionmap>
+	<actionmap name="default">
+		<action consoleCmd="1" keyboard="f5" name="sv_port = 100" onPress="1"/>
+		<action consoleCmd="1" keyboard="f7" name="sv_port = 101" onPress="1"/>
+		<action keyboard="space" name="skip_cutscene" noModifiers="1" onPress="1" ps3pad="pad_triangle" xboxpad="xi_y" nxpad="nx_x"/>
+		<action keyboard="disconnect" name="xi_disconnect" onPress="1" onRelease="1" />
+		<action keyboard="o" name="objectives" noModifiers="0" onPress="1" onRelease="1" />
+		<action keyboard="tab" name="hud_show_multiplayer_scoreboard" noModifiers="0" onPress="1" />
+		<action keyboard="tab" name="hud_hide_multiplayer_scoreboard" noModifiers="0" onRelease="1" />
+		<action keyboard="space" name="hud_toggle_scoreboard_cursor" noModifiers="0" onPress="1" onRelease="1" />
+		<action keyboard="m" name="hud_show_pda_map" noModifiers="0" onPress="1" />
+		<action name="xi_hud_show_pda_map" onRelease="1" onTap="1" holdTriggerDelay="0.22" ps3pad="pad_touch" xboxpad="xi_back" nxpad="nx_select"/>
+		<action name="xi_hud_hide_pda_map" onRelease="1" ps3pad="pad_circle" xboxpad="xi_b" nxpad="nx_b"/>
+		<!--action keyboard="p" name="hud_buy_weapons" noModifiers="0" onPress="1" /-->
+		<action keyboard="f" name="use" onHold="1" onPress="1" onRelease="1" holdTriggerDelay="0.25" holdRepeatDelay="-1.0"/>
+		<action name="xi_use" onHold="1" onPress="1" onRelease="1" holdTriggerDelay="0.25" holdRepeatDelay="-1.0" ps3pad="pad_square" xboxpad="xi_x" nxpad="nx_y" />
+		<action keyboard="n" name="hud_night_vision" onPress="1" ps3pad="pad_down" xboxpad="xi_dpad_down" nxpad="nx_down"/>
+		<action keyboard="mouse2" name="zoom" onPress="1" onHold="1" onRelease="1" holdTriggerDelay="0.25" holdRepeatDelay="-1.0"/>
+		<action name="xi_zoom" onPress="1" onRelease="1" onHold="1" ps3pad="pad_l2" xboxpad="xi_triggerl_btn" nxpad="nx_zl"/>
+		<action keyboard="5" name="firemode" onPress="1" ps3pad="pad_left" xboxpad="xi_dpad_left" nxpad="nx_left"/>
+		<action keyboard="backspace" name="hud_pda_scroll" noModifiers="0" onPress="1" />
+		<action keyboard="1" name="hud_select1" onPress="1" ps3pad="pad_triangle" xboxpad="xi_y" nxpad="nx_x" />
+		<action keyboard="2" name="hud_select2" onPress="1" ps3pad="pad_square" xboxpad="xi_x" nxpad="nx_y"/>
+		<action keyboard="3" name="hud_select3" onPress="1" ps3pad="pad_circle" xboxpad="xi_b" nxpad="nx_a"/>
+		<action keyboard="4" name="hud_select4" onPress="1" ps3pad="pad_cross" xboxpad="xi_a" nxpad="nx_b"/>
+		<action keyboard="5" name="hud_select5" onPress="1" ps3pad="pad_r1" xboxpad="xi_shoulderr" nxpad="nx_r"/>
+		<action keyboard="end" name="hud_mptutorial_disable" onpress="1" />
+		<action keyboard="maxis_x" name="hud_mousex" ps3pad="pad_stickrx" xboxpad="xi_thumbrx" nxpad="nx_stickrx"/>
+		<action keyboard="maxis_y" name="hud_mousey" ps3pad="pad_stickry" xboxpad="xi_thumbry" nxpad="nx_stickry" />
+		<action keyboard="mouse1" name="hud_mouseclick" onPress="1" onRelease="1" />
+		<action name="xi_hud_mouseclick" onPress="1" onRelease="1" ps3pad="pad_cross" xboxpad="xi_a" nxpad="nx_a"/>
+		<action keyboard="mwheel_up" name="hud_mousewheelup" onPress="1" onRelease="1" ps3pad="pad_r1" xboxpad="xi_shoulderr" nxpad="nx_r"/>
+		<action name="xi_hud_back" onPress="1" onRelease="1" ps3pad="pad_start" xboxpad="xi_start" nxpad="nx_start"/>
+		<action keyboard="mwheel_down" name="hud_mousewheeldown" onPress="1" onRelease="1" ps3pad="pad_l1" xboxpad="xi_shoulderl" nxpad="nx_l"/>
+		<action keyboard="mouse2" name="hud_mouserightbtndown" onPress="1" />
+		<action keyboard="mouse2" name="hud_mouserightbtnup" onRelease="1" />
+		<action consoleCmd="1" keyboard="period" name="buyammo" onPress="1" />
+		<!-- <action keyboard="lalt" name="voice_chat_talk" onPress="1" onRelease="1" /> -->
+		<action keyboard="y" name="hud_openchat" onPress="1" />
+		<action keyboard="u" name="hud_openteamchat" onPress="1" />
+		<action keyboard="space" name="cycle_spectator_mode" onPress="1" />
+		<action keyboard="left" name="prev_spectator_target" onPress="1" />
+		<action keyboard="mouse2" name="next_spectator_target" onPress="1" />
+	</actionmap>
+	<actionmap name="player">
+		<action keyboard="a" name="moveleft" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="d" name="moveright" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="w" name="moveforward" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="s" name="moveback" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="space" name="jump" onPress="1" onRelease="1" onTap="1" holdTriggerDelay="0.18" ps3pad="pad_cross" xboxpad="xi_a" nxpad="nx_b" />
+		<action keyboard="space" name="powerjump" onHold="1" holdTriggerDelay="0.18" holdRepeatDelay="-1.0"  ps3pad="pad_cross" xboxpad="xi_a" nxpad="nx_b"/>
+		<action keyboard="space" name="powerjump_classic" onPress="1" ps3pad="pad_cross" xboxpad="xi_a" nxpad="nx_b"/>
+		<!-- <action keyboard="c" name="crouch" onPress="1" onHold="1" onTap="1" onRelease="1" holdTriggerDelay="0.2" ps3pad="pad_circle" xboxpad="xi_b" nxpad="nx_a" /> -->
+		<action keyboard="c" name="crouch" onPress="1" ps3pad="pad_circle" xboxpad="xi_b" nxpad="nx_a" />
+		<action keyboard="z" name="prone" onPress="1" onTap="1" onRelease="1"/>
+		<action name="xi_prone" onHold="1" holdTriggerDelay="0.2" holdRepeatDelay="-1.0" ps3pad="pad_circle" xboxpad="xi_b" nxpad="nx_a"/>
+		<action keyboard="lshift" name="sprint" onPress="1" onRelease="1" onHold="1" holdTriggerDelay="0.3" holdRepeatDelay="-1.0" ps3pad="pad_l3" xboxpad="xi_thumbl" nxpad="nx_l3"/>
+		<action keyboard="lalt" name="walkslow" onPress="1" onRelease="1" />
+		<action keyboard="v" name="special" onPress="1" onTap="1" onRelease="1" holdTriggerDelay="0.2" holdRepeatDelay="-1.0" ps3pad="pad_r3" xboxpad="xi_thumbr" nxpad="nx_r3"/>
+		<action keyboard="v" name="powermelee" onHold="1" holdTriggerDelay="0.2" holdRepeatDelay="-1.0" ps3pad="pad_r3" xboxpad="xi_thumbr" nxpad="nx_r3"/>
+		<action keyboard="v" name="powermelee_classic" onPress="1" ps3pad="pad_r3" xboxpad="xi_thumbr" nxpad="nx_r3"/>
+		<action keyboard="q" name="leanleft" onHold="1" onPress="1" onRelease="1" />
+		<action keyboard="e" name="leanright" onHold="1" onPress="1" onRelease="1" />
+		<action keyboard="r" name="reload" onPress="1" onRelease="1" ps3pad="pad_square" xboxpad="xi_x" nxpad="nx_y"/>
+		<action keyboard="j" name="drop" onPress="1" onRelease="1"/>
+		<action name="xi_drop" onPress="1" onRelease="1" ps3pad="pad_l1" xboxpad="xi_shoulderl" nxpad="nx_l"/>
+		<action keyboard="mwheel_up" name="nextitem" onPress="1"/>
+		<action keyboard="mwheel_down" name="previtem" onPress="1" />
+		<action keyboard="1" name="small" onPress="1" />
+		<action keyboard="2" name="medium" onPress="1" />
+		<action keyboard="3" name="explosive" onPress="1" />
+		<action keyboard="4" name="utility" onPress="1" />
+		<action keyboard="mouse1" name="attack1" onPress="1" onHold="1" onRelease="1" ps3pad="pad_r2" xboxpad="xi_triggerr_btn" nxpad="nx_zr"/>
+		<action keyboard="mouse3" name="hud_suit_menu" onPress="1" onRelease="1" ps3pad="pad_l1" xboxpad="xi_shoulderl" nxpad="nx_l"/>
+		<action name="hud_suit_menu_alt" onPress="1" onRelease="1" ps3pad="pad_r1" xboxpad="xi_shoulderr" nxpad="nx_r"/>
+		<action name="toggleArmor" onPress="1" ps3pad="pad_l1" xboxpad="xi_shoulderl" nxpad="nx_l" />
+		<action name="toggleStealth" onPress="1" ps3pad="pad_r1" xboxpad="xi_shoulderr" nxpad="nx_r"/>
+		<action keyboard="6" name="hud_weapon_select_wheel" onPress="1" onHold="1" onRelease="1" holdTriggerDelay="0.22" holdRepeatDelay="-1.0" ps3pad="pad_triangle" xboxpad="xi_y" nxpad="nx_x"/>
+		<action keyboard="b" name="binoculars" onPress="1" ps3pad="pad_up" xboxpad="xi_dpad_up" nxpad="nx_up"/>
+		<action keyboard="g" name="grenade" onPress="1" onRelease="1"/>
+		<action keyboard="y" name="handgrenade" onPress="1" ps3pad="pad_right" retriggerable="1" xboxpad="xi_dpad_right" nxpad="nx_right" />
+		<!--action keyboard="n" name="gboots" onPress="1" /-->
+		<action keyboard="x" name="hud_weapon_mod" onPress="1" onRelease="1" holdRepeatDelay="-1.0"/>
+		<action name="xi_hud_weapon_mod" onHold="1" onRelease="1" holdTriggerDelay="0.22" holdRepeatDelay="-1.0" ps3pad="pad_touch" xboxpad="xi_back" nxpad="nx_select"/>
+		<action keyboard="maxis_x" name="rotateyaw" />
+		<action keyboard="maxis_y" name="rotatepitch" />
+		<action keyboard="mwheel_up" name="zoom_in" onPress="1"/>
+		<action keyboard="mwheel_down" name="zoom_out" onPress="1"/>
+		<action name="zoom_toggle" onPress="1" ps3pad="pad_r3" xboxpad="xi_thumbr" nxpad="nx_r3"/>
+		<action name="xi_movey" ps3pad="pad_stickly" xboxpad="xi_thumbly" nxpad="nx_stickly"/>
+		<action name="xi_movex" ps3pad="pad_sticklx" xboxpad="xi_thumblx" nxpad="nx_sticklx"/>
+		<action name="xi_rotateyaw" ps3pad="pad_stickrx" xboxpad="xi_thumbrx" nxpad="nx_stickrx"/>
+		<action name="xi_rotatepitch" ps3pad="pad_stickry" xboxpad="xi_thumbry" nxpad="nx_stickry"/>
+		<action name="attacktag" onPress="1" ps3pad="pad_square" xboxpad="xi_x" nxpad="nx_y"/>
+		<action name="xi_binoculars" onPress="1" onRelease="1" />
+		<action keyboard="h" name="horn" onPress="1" onRelease="1" />
+		<action keyboard="l" name="lights" onPress="1" />
+		<action consoleCmd="1" keyboard="pgup" name="sv_port = 3" onPress="1" />
+		<action consoleCmd="1" keyboard="pgdn" name="sv_port = 1" onPress="1" />
+		<!-- <action consoleCmd="1" keyboard="home" name="sv_port = 12" onPress="1" /> -->
+		<!-- <action consoleCmd="1" keyboard="end" name="sv_port = 14" onPress="1" /> -->
+	</actionmap>
+	<actionmap name="vehicle">
+		<action name="use" onPress="1" onRelease="1" ps3pad="pad_square" xboxpad="xi_x" nxpad="nx_y"/>
+		<action keyboard="1" name="v_changeseat1" onPress="1" />
+		<action keyboard="2" name="v_changeseat2" onPress="1" />
+		<!--action keyboard="3" name="v_changeseat3" onPress="1" /-->
+		<!--action keyboard="4" name="v_changeseat4" onPress="1" /-->
+		<!--action keyboard="5" name="v_changeseat5" onPress="1" /-->
+		<action name="v_changeseat" onPress="1" ps3pad="pad_triangle" xboxpad="xi_y" nxpad="nx_x"/>
+		<action keyboard="f1" name="v_changeview" onPress="1" ps3pad="pad_left" xboxpad="xi_dpad_left" nxpad="nx_left" />
+		<action keyboard="mwheel_up" name="v_zoom_in" onPress="1" />
+		<action keyboard="mwheel_down" name="v_zoom_out" onPress="1" />
+		<action keyboard="maxis_x" name="v_rotateyaw" />
+		<action keyboard="maxis_y" name="v_rotatepitch" />
+		<action keyboard="b" name="binoculars" onPress="1" />
+		<action name="xi_v_movex" ps3pad="pad_sticklx" xboxpad="xi_thumblx" nxpad="nx_sticklx"/>
+		<action name="xi_v_rotateyaw" ps3pad="pad_stickrx" xboxpad="xi_thumbrx" nxpad="nx_stickrx"/>
+		<action name="xi_v_rotatepitch" ps3pad="pad_stickry" xboxpad="xi_thumbry" nxpad="nx_stickry"/>
+		<action keyboard="mouse1" name="v_attack1" onPress="1" onRelease="1"/>
+		<action keyboard="mouse2" name="v_attack2" onPress="1" onHold="1" onRelease="1" holdTriggerDelay="0.25" holdRepeatDelay="-1.0"/>
+	</actionmap>
+	<actionmap name="vehicleDriver">
+		<action keyboard="h" name="v_horn" onPress="1" onRelease="1" ps3pad="pad_r3" xboxpad="xi_thumbr" nxpad="nx_r3" />
+		<action keyboard="l" name="v_lights" onPress="1" onRelease="1" ps3pad="pad_up" xboxpad="xi_dpad_up" nxpad="nx_up" />
+		<action name="v_attack1" onPress="1" onRelease="1" ps3pad="pad_l1" xboxpad="xi_shoulderl" nxpad="nx_l"/>
+		<action name="v_attack2" onPress="1" onHold="1" onRelease="1" ps3pad="pad_r1" holdTriggerDelay="0.25" holdRepeatDelay="-1.0" xboxpad="xi_shoulderr" nxpad="nx_r" />
+		<action keyboard="mwheel_up" name="v_hud_mousewheelup" onPress="1" onRelease="1" xboxpad="pad_r1" ps3pad="xi_shoulderr" nxpad="nx_r"/>
+		<action keyboard="mwheel_down" name="v_hud_mousewheeldown" onPress="1" onRelease="1" xboxpad="pad_l1" ps3pad="xi_shoulderl" nxpad="nx_l"/>
+	</actionmap>
+	<actionmap name="vehicleGunner">
+		<action name="v_attack1" onPress="1" onRelease="1" ps3pad="pad_r2" xboxpad="xi_triggerr_btn" nxpad="nx_zr"/>
+		<action name="v_attack2" onPress="1" onHold="1" onRelease="1" ps3pad="pad_l2" holdTriggerDelay="0.25" holdRepeatDelay="-1.0" xboxpad="xi_triggerl_btn" nxpad="nx_zl" />
+	</actionmap>
+	<actionmap name="aaa">
+		<action name="v_attack1" onPress="1" onRelease="1" ps3pad="pad_l2" xboxpad="xi_triggerl_btn" nxpad="nx_zl"/>
+		<action name="v_attack2" onPress="1" onRelease="1" ps3pad="pad_r2" xboxpad="xi_triggerr_btn" nxpad="nx_zr"/>
+	</actionmap>
+	<actionmap name="landvehicle">
+		<action keyboard="a" name="v_turnleft" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="d" name="v_turnright" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="w" name="v_moveforward" onPress="1" onRelease="1" retriggerable="1" ps3pad="pad_r2" xboxpad="xi_triggerr_btn" nxpad="nx_zr"/>
+		<action keyboard="s" name="v_moveback" onPress="1" onRelease="1" ps3pad="pad_l2" retriggerable="1" xboxpad="xi_triggerl_btn" nxpad="nx_zl"/>
+		<action keyboard="space" name="v_brake" onPress="1" onRelease="1" ps3pad="pad_circle" retriggerable="1" xboxpad="xi_b" nxpad="nx_a"/>
+		<action keyboard="lshift" name="v_boost" onPress="1" onRelease="1" ps3pad="pad_cross" retriggerable="1" xboxpad="xi_a" nxpad="nx_b"/>
+		<action keyboard="q" name="v_rollleft" onPress="1" onRelease="1" />
+		<action keyboard="e" name="v_rollright" onPress="1" onRelease="1" />
+	</actionmap>
+	<actionmap name="seavehicle">
+		<action keyboard="a" name="v_turnleft" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="d" name="v_turnright" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="w" name="v_moveforward" onPress="1" onRelease="1" ps3pad="pad_r2" retriggerable="1" xboxpad="xi_triggerr_btn" nxpad="nx_zr"/>
+		<action keyboard="s" name="v_moveback" onPress="1" onRelease="1" ps3pad="pad_l2" retriggerable="1" xboxpad="xi_triggerl_btn" nxpad="nx_zl"/>
+		<action keyboard="space" name="v_brake" onPress="1" onRelease="1" ps3pad="pad_circle" retriggerable="1" xboxpad="xi_b" nxpad="nx_a"/>
+		<action keyboard="lshift" name="v_boost" onHold="1" onPress="1" onRelease="1" ps3pad="pad_cross" retriggerable="1" xboxpad="xi_a" nxpad="nx_b" />
+	</actionmap>
+	<actionmap name="vtol">
+		<action name="xi_v_movey" ps3pad="pad_stickly" xboxpad="xi_thumbly" nxpad="nx_stickly"/>
+		<action keyboard="w" name="v_moveforward" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="s" name="v_moveback" onPress="1" onRelease="1" retriggerable="1" />
+		<action keyboard="space" name="v_moveup" onPress="1" onRelease="1" ps3pad="pad_up" xboxpad="xi_dpad_up" nxpad="nx_up"/>
+		<action keyboard="lctrl" name="v_movedown" onPress="1" onRelease="1" ps3pad="pad_down" xboxpad="xi_dpad_down" nxpad="nx_down"/>
+		<action keyboard="q" name="v_rollleft" onPress="1" onRelease="1" onHold="1"  xboxpad="pad_l2" ps3pad="xi_triggerl_btn" nxpad="nx_zl"/>
+		<action keyboard="e" name="v_rollright" onPress="1" onRelease="1" onHold="1"  xboxpad="pad_r2" ps3pad="xi_triggerr_btn" nxpad="nx_zr"/>
+		<action keyboard="a" name="v_strafeleft" onPress="1" onRelease="1" onHold="1" />
+		<action keyboard="d" name="v_straferight" onPress="1" onRelease="1" onHold="1" />
+		<action keyboard="lshift" name="v_boost" onPress="1" onRelease="1" retriggerable="1" ps3pad="pad_cross" xboxpad="xi_a" nxpad="nx_b"/>
+		<action keyboard="maxis_x" name="v_rotatedir" always="1"/>
+		<action keyboard="maxis_y" name="v_rotatepitch" always="1"/>
+		<action name="xi_v_rotateyaw" ps3pad="pad_stickrx" xboxpad="xi_thumbrx" nxpad="nx_stickrx"/>
+		<action name="xi_v_rotatepitch" ps3pad="pad_stickry" xboxpad="xi_thumbry" nxpad="nx_stickry"/>
+	</actionmap>
+</profile>
+
+
