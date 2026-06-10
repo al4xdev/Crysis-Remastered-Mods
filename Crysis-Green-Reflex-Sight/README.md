@@ -5,10 +5,17 @@ This mod replaces the standard red dot reticle on the Reflex Sight weapon access
 ## Features
 
 - **Triangle Reticle:** Uses a high-definition green triangle/delta chevron for more precise aiming.
-- **50% Smaller Size:** Reduced to 16x16 pixels within a 128x128 canvas, making it cleaner, sharper, and less obtrusive.
-- **Supersampled Anti-aliasing:** The custom texture is generated programmatically using 4x4 subpixel multisampling to prevent jagged edges in-game.
+- **Vibrant Neon Green:** Offers superior contrast and visibility across various environments compared to the default red reticle.
+- **Clean Override:** Only modifies the reticle textures, having zero performance impact and no dependencies.
 
 ## Installation
 
-1. Copy `zzzz_zRemasterGreenReflexSight.pak` into your `...\Crysis Remastered\Game\` folder.
+1. Copy `zzzz_GreenReflexSight.pak` into your `...\Crysis Remastered\Game\` folder.
 2. In-game, equip the **Reflex Sight** accessory on any weapon to view the updated green triangle.
+
+---
+
+## Nexus Mods & Updates
+You can also find this mod on my [Nexus Mods Profile](https://www.nexusmods.com/profile/alexspf).
+> [!NOTE]
+> The GitHub repository is the main source of development. The most up-to-date and stable versions of the mods will always be released here first.
