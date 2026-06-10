@@ -26,3 +26,9 @@ g_suitSprintMultiplier_speedMode_outOfEnergy = 3.0
 g_suitSpeedJumpExtraForceInViewDirection_Horizontal = 2.2
 ```
 
+---
+
+## Nexus Mods & Updates
+You can also find this mod on my [Nexus Mods Profile](https://www.nexusmods.com/profile/alexspf).
+> [!NOTE]
+> The GitHub repository is the main source of development. The most up-to-date and stable versions of the mods will always be released here first.

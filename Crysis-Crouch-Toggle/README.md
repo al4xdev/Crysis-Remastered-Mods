@@ -1,22 +1,24 @@
-# Crysis Remastered - Keybinds and Crouch Toggle Fix
+# Crysis Remastered - Crouch Toggle Fix
 
-This mod modernizes the layout of Crysis Remastered to feel more agile and inline with modern first-person shooters (like Call of Duty), while keeping the Nanosuit quick-access capabilities.
+This mod restores Crouch Toggle functionality to *Crysis Remastered* natively without breaking or overwriting any other keys or custom control layouts.
 
 ## Features
 
 - **Toggle Crouch:** Switches Crouch from hold-to-toggle natively.
-- **Modern Key Layout:**
-  - Crouch (Toggle): `C`
-  - Prone: `LCTRL` (Left Control)
-  - Armor Mode (Quick Activate): `Mouse3` (Middle Click / Scroll Click)
-  - Cloak Mode (Quick Activate): `T`
-  - Leaning (Hold): `Q` and `E` (standard hold behavior to lean around corners)
+- **Clean Profile:** Leaves all other default keys completely untouched, allowing you to customize your other keybinds inside the in-game options menu without issues.
 
 ## Installation & Setup
 
-1. Copy `zzzz_zRemasterKeybindsFix.pak` into the `...\Crysis Remastered\Game\` folder.
+1. Copy `zzzz_zRemasterCrouchToggleFix.pak` into your `...\Crysis Remastered\Game\` folder.
 2. In the game's root directory (`...\Crysis Remastered\`), open (or create) a file named `autoexec.cfg` and add the following line:
    ```cfg
    cl_crouchToggle = 1
    ```
    *This console variable tells the engine to handle the C key input as a toggle event.*
+
+---
+
+## Nexus Mods & Updates
+You can also find this mod on my [Nexus Mods Profile](https://www.nexusmods.com/profile/alexspf).
+> [!NOTE]
+> The GitHub repository is the main source of development. The most up-to-date and stable versions of the mods will always be released here first.
