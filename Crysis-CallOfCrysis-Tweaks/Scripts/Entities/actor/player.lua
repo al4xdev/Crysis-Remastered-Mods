@@ -17,11 +17,6 @@ Player = {
 		soclasses_SmartObjectClass = "Player",
 		groupid = 0,
 		esFaction = "Players",
-		resetHack = 0,
-		classicMode = 1,
-		suitMode = 0,
-		last_known_dialog_volume = -1,
-		last_known_sfx_volume = -1,
 		commrange = 40; -- Luciano - added to use SIGNALFILTER_GROUPONLY
 		-- AI-related properties over
 
@@ -162,7 +157,7 @@ Player = {
 			{
 				stanceId = STANCE_STAND,
 				normalSpeed = 1.75,
-				maxSpeed = 5.0,
+				maxSpeed = 6.5,
 				heightCollider = 1.2,
 				heightPivot = 0.0,
 				size = {x=0.4,y=0.4,z=0.3},
@@ -379,203 +374,10 @@ function Player.Client:OnInit()
 	self:OnInit();
 end
 
-function Player:CvarWorkaround()
-	--This is not a very good fix. But it allows us to work around the fact that Crysis Remastered cannot access Cvar values through flowgraphs.
-	if(System.GetCVar("cl_classicSuit") == 1) then
-		GameToken.SetToken( "Game.General.ClassicSuit", "1" );
-	else
-	   GameToken.SetToken( "Game.General.ClassicSuit", "0" );
-	end
-	--System.Log(tostring(GameToken.GetToken( "Game.General.ClassicSuit")));
-	--System.Log(GameToken.GetToken( "Game.General.ClassicSuit"));
-end
-
-
---What happens in a worse case scenario where the game crashes or is terminated in the 2 seconds after loading a save-game where the user had armour mode on?
-function Player:SFXBack()
-	--System.SetCVar("s_SFXVolume", self.Properties.last_known_sfx_volume)
-	System.SetCVar("s_DialogVolume", self.Properties.last_known_dialog_volume)
-end
-
---The classic nanosuit has a bug where loading a save where the suit is:
---1: In classic mode.
---2: In armour mode.
---Will result in the modern nanosuit "hhhhhhhhmmmmmmmmmm" sound playing in the background forever.
---The solution is fairly simple, but hacky.
---If the suit is in strength mode, switch to modern nanosuit, then cycle to strength mode, then reset to classic suit, then cycle to armour mode again.
-function Player:SuitMixHotFix(port)
-	--System.Log("Trying to call nanosuit fix");
-	local nanoSuitMode = self.actor:GetNanoSuitMode();
-	if(nanoSuitMode == 3) then
-		if(System.GetCVar("cl_classicSuit") == 1) then --Let's only do this hack if the classic nanosuit is enabled.
-			System.SetCVar("cl_classicSuit",0);
-			self.actor:SetNanoSuitMode(0);
-			System.SetCVar("cl_classicSuit",1);
-			self.actor:SetNanoSuitMode(3);	
-		end
-	end
-end
-
-function Player:UpdateFOV(port)
-	--FOV adjuster. Implement a nicer version with flowgraph integration soon.
-	if(port ~= 2) then
-		fovNum = tonumber(System.GetCVar("cl_fov"));
-		if(port == 3) then
-			if((fovNum + 1) > 80) then
-			   return;
-			end
-			fovNum = fovNum + 1;
-			System.SetCVar("cl_fov", fovNum);
-		elseif(port == 1) then
-			if((fovNum - 1) < 60) then
-			   return;
-			end
-			fovNum = fovNum - 1;
-			System.SetCVar("cl_fov", fovNum);
-		end
-		GameToken.SetToken("Game.General.FOV", tostring(fovNum));
-		if(fovNum > 80) then
-			System.SetCVar("cl_fpBody", 0);
-		else
-			System.SetCVar("cl_fpBody", 2);
-		end
-	end
-	if(port ~= 2) then
-		System.SetCVar("sv_port", 2)
-	end
-end
-
---Work in progress. Not working because we can't write to CVAR commands from here.
--- function Player:UpdateControls(port)
-		-- if(port == 12) then
-			-- System.Log("Setting controls to default.");
-			-- System.SetCVar("g_controlsStickLayout default", "");
-			-- System.SetCVar("g_controlsButtonsLayout default", "");
-			-- System.SetCVar("g_controlsVehicleStickLayout default", "");
-			-- System.SetCVar("g_controlsVehicleButtonLayout default", "");
-		-- elseif(port == 14) then
-			-- System.Log("Setting controls to lefty.");
-			-- System.SetCVar("g_controlsStickLayout lefty", "");
-			-- System.SetCVar("g_controlsButtonsLayout lefty", "");
-			-- System.SetCVar("g_controlsVehicleStickLayout lefty", "");
-			-- System.SetCVar("g_controlsVehicleButtonLayout lefty", "");
-		-- end
--- end
-
-function Player:ResetHack()
-		self:SuitMixHotFix();
-		--Hide the player's body if FOV is above 60.
-		storedFOV = tonumber(GameToken.GetToken( "Game.General.FOV"));
-		--System.Log(storedFOV);
-		
-		--If the token FOV is 60, but the current FOV is higher, we assume the current FOV is the desired one.
-		--This will probably mask any token bugs...
-		if(storedFOV == 60 and tonumber(System.GetCVar("cl_fov")) > 60) then
-			storedFOV = System.GetCVar("cl_fov");
-		end
-		
-		System.SetCVar("cl_fov", storedFOV);
-		if(storedFOV > 80) then
-			System.SetCVar("cl_fpbody", 0);
-		else
-			System.SetCVar("cl_fpbody", 2);
-		end
-			
-		--Remove speed mode energy usage for non-classic suit.
-		System.SetCVar("g_suitSpeedEnergyConsumption", -1);
-		--Lower cloak mode energy consumption.
-		System.SetCVar("g_suitCloakEnergyDrainAdjuster", 0.2);
-		self:GameplayFixClassicChanged(System.GetCVar("cl_classicSuit"));
-		self:GameplayFixModernSuitModeChanged(self.actor:GetNanoSuitMode());
-		--Sometimes the game sets near FOV to 55 instead of 60, for seemingly no reason. So we override here.
-		if(tonumber(System.GetCVar("r_DrawNearFOV")) == 55) then
-			System.SetCVar("r_DrawNearFOV", 60);
-		end
-		--The game has a problem with its vsync implementation. Sometimes, when running in fullscreen mode, the game will behave like vsync is enabled.
-		--This hack "jolts" the game out of it. I don't think it's a good hack, and it's probably just enabling borderless windowed behind the scenes.
-		--But what the player doesn't know won't hurt them.
-		if(System.GetCVar("r_fullscreen") == 1 and System.GetCVar("r_fullscreenwindowed") == 0) then
-			System.SetCVar("r_fullscreenwindowed", 1);
-			self:SetTimer(0,100);
-			System.SetCVar("r_fullscreenwindowed", 0);
-		end
-		self.Properties.resetHack = 0;
-end
-
-function Player:GameplayFixClassicChanged(classic)
-	if(classic == 0) then
-		System.SetCVar("g_suitSprintMultiplier_speedMode_gotFullEnergy", 3.0);
-		System.SetCVar("g_suitSprintMultiplier_speedMode_gotLowEnergy", 3.0);
-		System.SetCVar("g_suitSprintMultiplier_speedMode_outOfEnergy", 3.0);
-		System.SetCVar("g_suitSpeedJumpExtraForceInViewDirection_Horizontal", 2.2);
-		System.SetCVar("g_suitArmorHealthValue", 200);
-	else
-		System.SetCVar("g_suitSprintMultiplier_speedMode_gotFullEnergy", 4.2);
-		System.SetCVar("g_suitSprintMultiplier_speedMode_gotLowEnergy", 4.2);
-		System.SetCVar("g_suitSprintMultiplier_speedMode_outOfEnergy", 4.2);
-		System.SetCVar("g_suitSpeedJumpExtraForceInViewDirection_Horizontal", 3.2);
-		System.SetCVar("g_suitArmorHealthValue", 125);
-		System.SetCVar("g_walkMultiplier", 1);
-	end
-end
-
-function Player:GameplayFixModernSuitModeChanged(suit)
-	if(suit == 1) then
-		System.SetCVar("g_walkMultiplier", 1.5);
-	else
-		System.SetCVar("g_walkMultiplier", 1);
-	end
-end
-
-function Player:GetDefaultWalkMultiplier()
-	local classic = System.GetCVar("cl_classicSuit");
-	if(classic == 0) then
-		local suit = self.actor:GetNanoSuitMode();
-		if(suit == 1) then
-			return 1.5;
-		end
-	end
-	return 1;
-end
-
 function Player.Client:OnUpdate(frameTime)
 	BasicActor.Client.OnUpdate(self,frameTime);
 	--if (self.inventory) then
 		--self.inventory:Validate();
-	--end
-	port = System.GetCVar("sv_port") --Only get port value once per tick.
-	
-	--Calling the reset hack first SHOULD solve the FOV hack issue.
-	if(self.Properties.resetHack == 1) then
-		self:ResetHack(port);
-	end
-	
-	--port = tonumber(System.GetCVar("sv_port")) --Only get port value once per tick.
-	newClassicMode = System.GetCVar("cl_classicSuit");
-	if(self.Properties.classicMode ~= newClassicMode) then
-		self.Properties.classicMode = newClassicMode;
-		self:GameplayFixClassicChanged(newClassicMode);
-	end
-	if(self.Properties.classicMode == 0) then
-	newSuitMode = self.actor:GetNanoSuitMode();
-		if(self.Properties.suitMode ~= newSuitMode) then
-			self.Properties.suitMode = newSuitMode;
-			self:GameplayFixModernSuitModeChanged(newSuitMode);
-		end
-	end
-	
-	if(self.walkSlowActive) then
-		System.SetCVar("g_walkMultiplier", 0.4);
-	end
-	
-	self:CvarWorkaround();
-	
-	self:UpdateFOV(port);
-	--self:UpdateControls(port);
-		
-	--Force vsync to be disabled.
-	--if(System.GetCVar("r_vsync") == 1) then
-	    --System.SetCVar("r_vsync", 0);
 	--end
 	
 	local item = self.inventory:GetCurrentItem();
@@ -621,7 +423,6 @@ function Player:OnInit()
 	
 	self:OnReset(true);
 	--self:SetTimer(0,1);
-	self.Properties.resetHack = 1;
 end
 
 
@@ -640,10 +441,9 @@ function Player:OnReset()
 	self.hostageID = nil;
 	
 	BasicActor.Reset(self);
-	
 	self.gameParams.sprintMultiplier = 2.0;
 	self.gameParams.stance[1].maxSpeed = 6.5;
-
+	
 	self:SetTimer(0,500);
 	
 	self.thrusterAIVolume = 1.0;		-- Have different volume for the AI, since it needs differen scale.
@@ -680,7 +480,7 @@ function Player:OnReset()
 	self.actor:ActivateNanoSuit(1);
 	--FIXME:set normal cloak as default
 	self:SetCloakType(1);
-		
+	
 	self:KillTimer(THRUSTER_TIMER);
 	
 end
@@ -698,6 +498,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function Player:StartThrusterSounds(afterburn)
+			
 	if (not self.thrusterSound or not Sound.IsPlaying(self.thrusterSound)) then	
 		self.thrusterSound = self:PlaySoundEvent("sounds/interface:suit:thrusters_1p", g_Vectors.v000, g_Vectors.v010, SOUND_DEFAULT_3D, SOUND_SEMANTIC_PLAYER_FOLEY);
 		Sound.SetSoundLoop(self.thrusterSound,1);
@@ -781,16 +582,6 @@ function Player:OnAction(action, activation, value)
 	if (g_gameRules and g_gameRules.Client.OnActorAction) then
 		if (not g_gameRules.Client.OnActorAction(g_gameRules, self, action, activation, value)) then
 			return;
-		end
-	end
-
-	if (action == "walkslow") then
-		if (activation == "press") then
-			self.walkSlowActive = true;
-			System.SetCVar("g_walkMultiplier", 0.4);
-		elseif (activation == "release") then
-			self.walkSlowActive = nil;
-			System.SetCVar("g_walkMultiplier", self:GetDefaultWalkMultiplier());
 		end
 	end
 
@@ -961,7 +752,6 @@ end
 
 function Player:OnLoad(saved)
 	BasicActor.OnLoad(self, saved);
-	
 --	HUD:Spawn(self);
 
 --	self.AI.WeaponAccessoryTable = {};
@@ -971,8 +761,7 @@ function Player:OnLoad(saved)
 --			self.AI.WeaponAccessoryTable[acc] = on;
 --		end
 --	end
-
-	self.Properties.resetHack = 1;	
+	
 end
 
 function Player:OnLoadAI(saved)
