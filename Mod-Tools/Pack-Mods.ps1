@@ -22,7 +22,7 @@ if (-not $SourceFolder -or -not $OutputPakName) {
     exit
 }
 
-$srcDir = Resolve-Path (Join-Path ".." $SourceFolder)
+$srcDir = Get-Item (Resolve-Path (Join-Path ".." $SourceFolder))
 $zipPath = Join-Path $gameFolderPath $OutputPakName
 
 Write-Host "Packing '$srcDir' into '$zipPath'..." -ForegroundColor Cyan
