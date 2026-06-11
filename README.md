@@ -16,13 +16,16 @@ You can also find these mods on my [Nexus Mods Profile](https://www.nexusmods.co
    * Completely clean: preserves all other defaults and custom hotkeys.
 
 2. **[Crysis Green Reflex Sight](./Crysis-Green-Reflex-Sight)**
-   * Replaces the default red reflex sight triangle reticle with a vibrant neon-green reticle for improved target acquisition and visibility.
+   * Replaces the default red reflex sight triangle reticle with a vibrant, high-resolution (512x512) neon-green reticle for improved target acquisition.
 
 3. **[Call of Crysis - Gameplay Tweaks](./Crysis-CallOfCrysis-Tweaks)**
    * Boosts movement dynamics by increasing the default walk/run speed (normal and Nanosuit) and adjusting cloak energy drain for a faster, modern shooter experience.
 
 4. **[Crysis Walk & Crouch Toggle](./Crysis-Walk-Toggle)**
    * Converts Crouch into a toggle (C), adds Walk toggle functionality (LALT), and customizes binds for modern combat (Cloak on T, Armor on Mouse3, Lean on Q/E).
+
+5. **[Crysis ACOG Scope (R6S Style)](./Crysis-ACOG-Scope)**
+   * Replaces the default Assault Scope reticle with a clean, high-resolution (512x512) Rainbow Six Siege style red ACOG reticle (hollow chevron with vertical distance markings).
 
 ---
 
@@ -34,7 +37,8 @@ To install any of these mods:
    * `zzzzz_CrouchToggle.pak` (Crouch Toggle Standalone)
    * `zzzzz_WalkAndCrouch_Toggle.pak` (Walk & Crouch Toggle + Custom Binds)
    * `zzzzz_CallOfCrysisTweaks.pak` (Call of Crysis Gameplay Tweaks)
-   * `zzzzz_GreenReflexSight.pak` (Green Reflex Sight)
+   * `zzzzz_GreenReflexSight.pak` (High-Res Green Reflex Sight)
+   * `zzzzz_ACOGScope.pak` (High-Res ACOG R6S Style Scope)
 3. Copy the `.pak` files and paste them into your game's installation folder:
    `...\Crysis Remastered\Game\`
 4. If you are using either Crouch Toggle or Walk & Crouch Toggle, open or create the file `autoexec.cfg` in the game's root directory (`...\Crysis Remastered\`) and add:
