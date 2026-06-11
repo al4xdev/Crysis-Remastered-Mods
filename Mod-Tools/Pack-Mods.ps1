@@ -3,27 +3,49 @@
 # Run this script from PowerShell inside the Mod-Tools directory or the root directory.
 
 param (
-    [string]$GameDir = "..", # Relative path to Crysis root or specify the absolute path
     [string]$SourceFolder,   # e.g., "Crysis-Crouch-Toggle"
-    [string]$OutputPakName   # e.g., "zzzz_zRemasterCrouchToggleFix.pak"
+    [string]$OutputPakName,  # e.g., "zzzz_zRemasterCrouchToggleFix.pak"
+    [string]$OutputDir = ""  # Default: same folder as the script
 )
 
 # Load compression assembly
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
-# Resolve paths
-$resolvedGameDir = Resolve-Path $GameDir
-$gameFolderPath = Join-Path $resolvedGameDir "Game"
-
 if (-not $SourceFolder -or -not $OutputPakName) {
-    Write-Host "Usage: .\Pack-Mods.ps1 -SourceFolder <folder_name> -OutputPakName <pak_name.pak>" -ForegroundColor Yellow
-    Write-Host "Example: .\Pack-Mods.ps1 -SourceFolder 'Crysis-Crouch-Toggle' -OutputPakName 'zzzz_zRemasterCrouchToggleFix.pak'" -ForegroundColor Yellow
-    exit
+    Write-Host "Usage: .\Pack-Mods.ps1 -SourceFolder <folder_name> -OutputPakName <pak_name.pak> [-OutputDir <dir>]" -ForegroundColor Yellow
+    exit 1
 }
 
-$srcDir = Get-Item (Resolve-Path (Join-Path ".." $SourceFolder))
-$zipPath = Join-Path $gameFolderPath $OutputPakName
+# Try to find source folder: first check sibling of Mod-Tools (..), then current dir
+$srcPath = Join-Path ".." $SourceFolder
+if (-not (Test-Path $srcPath)) {
+    $srcPath = Join-Path "." $SourceFolder
+}
+
+if (-not (Test-Path $srcPath)) {
+    Write-Host "ERROR: Source folder '$SourceFolder' not found." -ForegroundColor Red
+    Write-Host "  Looked in: $(Resolve-Path '.')" -ForegroundColor Red
+    Write-Host "  And in:    $(Resolve-Path '..')" -ForegroundColor Red
+    exit 1
+}
+
+$srcDir = Get-Item (Resolve-Path $srcPath)
+
+# Resolve OutputDir: absolute = use as-is | relative = resolve from script dir | empty = script dir
+if (-not $OutputDir) {
+    $resolvedOutputDir = $PSScriptRoot
+} elseif ([System.IO.Path]::IsPathRooted($OutputDir)) {
+    $resolvedOutputDir = $OutputDir
+} else {
+    $resolvedOutputDir = Join-Path $PSScriptRoot $OutputDir
+}
+
+if (-not (Test-Path $resolvedOutputDir)) {
+    New-Item -ItemType Directory -Force -Path $resolvedOutputDir | Out-Null
+}
+
+$zipPath = Join-Path $resolvedOutputDir $OutputPakName
 
 Write-Host "Packing '$srcDir' into '$zipPath'..." -ForegroundColor Cyan
 
@@ -33,26 +55,57 @@ if (Test-Path $zipPath) {
 }
 
 # Create zip archive
-$zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Create)
-$files = Get-ChildItem -Path $srcDir -Recurse -File
+try {
+    $zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Create)
+    $files = Get-ChildItem -Path $srcDir -Recurse -File
 
-foreach ($file in $files) {
-    # Skip README.md and .git files if they exist in source
-    if ($file.Name -eq "README.md" -or $file.FullName -like "*\.git\*") {
-        continue
+    if ($files.Count -eq 0) {
+        Write-Host "ERROR: Source folder '$SourceFolder' is empty. Nothing to pack." -ForegroundColor Red
+        $zip.Dispose()
+        Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
+        exit 1
     }
-    
-    # Calculate relative entry path
-    $relPath = $file.FullName.Substring($srcDir.FullName.Length + 1)
-    $entryName = $relPath.Replace("\", "/") # CryEngine requires forward slashes
-    
-    $entry = $zip.CreateEntry($entryName, [System.IO.Compression.CompressionLevel]::Optimal)
-    $entryStream = $entry.Open()
-    $fileStream = [System.IO.File]::OpenRead($file.FullName)
-    $fileStream.CopyTo($entryStream)
-    $fileStream.Close()
-    $entryStream.Close()
-}
-$zip.Dispose()
 
-Write-Host "Successfully compiled $OutputPakName!" -ForegroundColor Green
+    $packed = 0
+    foreach ($file in $files) {
+        # Skip README.md and .git files if they exist in source
+        if ($file.Name -eq "README.md" -or $file.FullName -like "*\.git\*") {
+            continue
+        }
+
+        # Calculate relative entry path
+        $relPath = $file.FullName.Substring($srcDir.FullName.Length + 1)
+        $entryName = $relPath.Replace("\", "/") # CryEngine requires forward slashes
+
+        # Ensure Scripts directory is lowercase 'scripts'
+        if ($entryName -like "Scripts/*") {
+            $entryName = "scripts/" + $entryName.Substring(8)
+        }
+
+        $entry = $zip.CreateEntry($entryName, [System.IO.Compression.CompressionLevel]::Optimal)
+        $entryStream = $entry.Open()
+        $fileStream = [System.IO.File]::OpenRead($file.FullName)
+        $fileStream.CopyTo($entryStream)
+        $fileStream.Close()
+        $entryStream.Close()
+        $packed++
+    }
+
+    $zip.Dispose()
+
+    if ($packed -eq 0) {
+        Write-Host "ERROR: No valid files were packed (only skipped files found)." -ForegroundColor Red
+        Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
+        exit 1
+    }
+
+    Write-Host "Successfully compiled $OutputPakName! ($packed files packed)" -ForegroundColor Green
+    Write-Host "  Saved to: $zipPath" -ForegroundColor Green
+
+} catch {
+    Write-Host "ERROR: Failed to create pak archive." -ForegroundColor Red
+    Write-Host "  Reason: $($_.Exception.Message)" -ForegroundColor Red
+    if ($zip) { $zip.Dispose() }
+    Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
+    exit 1
+}

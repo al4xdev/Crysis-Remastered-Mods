@@ -38,6 +38,11 @@ def pack_folder(src_dir, output_pak):
                     rel_path = os.path.relpath(file_path, src_dir)
                     # Convert to forward slashes for CryEngine
                     entry_name = rel_path.replace(os.path.sep, '/')
+                    
+                    # Ensure Scripts directory is lowercase 'scripts'
+                    if entry_name.startswith('Scripts/'):
+                        entry_name = 'scripts/' + entry_name[8:]
+                        
                     zipf.write(file_path, entry_name)
         print(f"Successfully compiled {os.path.basename(output_pak)}!")
         return True

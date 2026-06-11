@@ -19,7 +19,10 @@ You can also find these mods on my [Nexus Mods Profile](https://www.nexusmods.co
    * Replaces the default red reflex sight triangle reticle with a vibrant neon-green reticle for improved target acquisition and visibility.
 
 3. **[Call of Crysis - Gameplay Tweaks](./Crysis-CallOfCrysis-Tweaks)**
-   * Boosts movement dynamics by increasing the default walk and run speed (both normal and Nanosuit speeds) for a faster shooter experience.
+   * Boosts movement dynamics by increasing the default walk/run speed (normal and Nanosuit) and adjusting cloak energy drain for a faster, modern shooter experience.
+
+4. **[Crysis Walk & Crouch Toggle](./Crysis-Walk-Toggle)**
+   * Converts Crouch into a toggle (C), adds Walk toggle functionality (LALT), and customizes binds for modern combat (Cloak on T, Armor on Mouse3, Lean on Q/E).
 
 ---
 
@@ -28,14 +31,15 @@ You can also find these mods on my [Nexus Mods Profile](https://www.nexusmods.co
 To install any of these mods:
 1. Go to the **Releases** section of this repository.
 2. Download the `.pak` file of the mod you want to install:
-   * `zzzz_zRemasterCrouchToggleFix.pak` (Crouch Toggle)
-   * `zzzz_CallOfCrysis.pak` (Call of Crysis Tweaks)
-   * `zzzz_GreenReflexSight.pak` (Green Reflex Sight)
+   * `zzzzz_CrouchToggle.pak` (Crouch Toggle Standalone)
+   * `zzzzz_WalkAndCrouch_Toggle.pak` (Walk & Crouch Toggle + Custom Binds)
+   * `zzzzz_CallOfCrysisTweaks.pak` (Call of Crysis Gameplay Tweaks)
+   * `zzzzz_GreenReflexSight.pak` (Green Reflex Sight)
 3. Copy the `.pak` files and paste them into your game's installation folder:
    `...\Crysis Remastered\Game\`
-4. For the Crouch Toggle mod, open or create the file `autoexec.cfg` in the game's root directory (`...\Crysis Remastered\`) and add:
+4. If you are using either Crouch Toggle or Walk & Crouch Toggle, open or create the file `autoexec.cfg` in the game's root directory (`...\Crysis Remastered\`) and add:
    ```cfg
    cl_crouchToggle = 1
    ```
 
-*Note: The `zzzz_` prefix in the filenames ensures that these mods load after all other assets, overriding their default files correctly.*
+*Note: The `zzzzz_` prefix in the filenames ensures that these mods load after all other assets (including other community mods), overriding their default files correctly.*
