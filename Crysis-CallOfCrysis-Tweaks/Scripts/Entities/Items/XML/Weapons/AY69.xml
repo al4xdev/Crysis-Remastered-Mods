@@ -245,6 +245,9 @@
 				<param name="damage_drop_per_meter" value="0.3" />
 				<param name="damage_drop_min_distance" value="25" />				
 				<param name="ai_vs_player_damage" value="25"/>					
+				<param name="camshake_rotate" value="0.0015,0.0015,0.0015" />
+				<param name="camshake_shift" value="0.0005,0.0005,0.0005" />
+				<param name="camshake_perShot" value="1" />
 			</fire>
 			<recoil>
 				<param name="max_recoil"	value="0" />
