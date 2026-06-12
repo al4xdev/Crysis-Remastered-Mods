@@ -19,3 +19,8 @@ This mod replaces the standard red dot reticle on the Reflex Sight weapon access
 You can also find this mod on my [Nexus Mods Profile](https://www.nexusmods.com/profile/alexspf).
 > [!NOTE]
 > The GitHub repository is the main source of development. The most up-to-date and stable versions of the mods will always be released here first.
+
+---
+
+## Credits
+Based on the green triangle reticle design originally by [Steam Community Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=846859489).

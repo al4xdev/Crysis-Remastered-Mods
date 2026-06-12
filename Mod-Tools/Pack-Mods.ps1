@@ -68,8 +68,8 @@ try {
 
     $packed = 0
     foreach ($file in $files) {
-        # Skip README.md and .git files if they exist in source
-        if ($file.Name -eq "README.md" -or $file.FullName -like "*\.git\*") {
+        # Skip README.md, .git files, scripts, and VPK archives if they exist in source
+        if ($file.Name -eq "README.md" -or $file.FullName -like "*\.git\*" -or $file.Extension -eq ".ps1" -or $file.Extension -eq ".vpk") {
             continue
         }
 
