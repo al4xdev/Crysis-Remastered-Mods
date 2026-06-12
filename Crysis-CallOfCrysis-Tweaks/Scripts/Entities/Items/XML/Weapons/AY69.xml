@@ -66,6 +66,7 @@
 		</action>
 
 		<action name="fire">
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_fp_single%env%" radius="150" static="1" />
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_3rd_single%env%" radius="150" static="1" />
@@ -73,6 +74,7 @@
 		</action>
 		
 		<action name="rapid_fire">
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_fp_loop" radius="175" static="1" synched="1"/>
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_3rd_loop" radius="175" static="1" synched="1"/>
@@ -80,6 +82,7 @@
 		</action>
 		
 		<action name="fire_silenced">
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_silenced_fp_single" radius="2" static="1" />
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_silenced_3rd_single" radius="2" static="1" />
@@ -87,6 +90,7 @@
 		</action>
 		
 		<action name="rapid_fire_silenced">
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_silenced_fp_loop" radius="5" static="1" synched="1"/>
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_silenced_3rd_loop" radius="5" static="1" synched="1"/>
@@ -119,6 +123,7 @@
 		</action>	
 
         <action name="fire_cock">
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_fp" radius="150" static="1" />
 			<sound target="thirdperson" name="sounds/weapons:smg:fire" radius="150" static="1" />
@@ -245,9 +250,6 @@
 				<param name="damage_drop_per_meter" value="0.3" />
 				<param name="damage_drop_min_distance" value="25" />				
 				<param name="ai_vs_player_damage" value="25"/>					
-				<param name="camshake_rotate" value="0.0015,0.0015,0.0015" />
-				<param name="camshake_shift" value="0.0005,0.0005,0.0005" />
-				<param name="camshake_perShot" value="1" />
 			</fire>
 			<recoil>
 				<param name="max_recoil"	value="0" />
@@ -393,7 +395,7 @@
 				<param name="hbob_ratio" value="3.0" />
 				<param name="zoom_in_time" value="0.2" />
 				<param name="zoom_out_time" value="0.2" />
-				<param name="shake_multiplier" value="0" />
+				<param name="shake_multiplier" value="0.05" />
 				<param name="scope_mode" value="1" />
 				<param name="scope_nearFov" value="24" />
 				<param name="scope_offset" value="0.0,0.2,-0.038" />	
