@@ -66,7 +66,7 @@
 		</action>
 
 		<action name="fire">
-			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="8.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_fp_single%env%" radius="150" static="1" />
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_3rd_single%env%" radius="150" static="1" />
@@ -74,7 +74,7 @@
 		</action>
 		
 		<action name="rapid_fire">
-			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="8.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_fp_loop" radius="175" static="1" synched="1"/>
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_3rd_loop" radius="175" static="1" synched="1"/>
@@ -82,7 +82,7 @@
 		</action>
 		
 		<action name="fire_silenced">
-			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="8.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_silenced_fp_single" radius="2" static="1" />
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_silenced_3rd_single" radius="2" static="1" />
@@ -90,7 +90,7 @@
 		</action>
 		
 		<action name="rapid_fire_silenced">
-			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="8.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_silenced_fp_loop" radius="5" static="1" synched="1"/>
 			<sound target="thirdperson" name="sounds/weapons:smg:fire_silenced_3rd_loop" radius="5" static="1" synched="1"/>
@@ -123,7 +123,7 @@
 		</action>	
 
         <action name="fire_cock">
-			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="3.0" />
+			<animation target="firstperson" name="fire_bullets_%hand%_%suffix%01" speed="8.0" />
 			<animation target="owner" name="shoot" />
 			<sound target="firstperson" name="sounds/weapons:smg:fire_fp" radius="150" static="1" />
 			<sound target="thirdperson" name="sounds/weapons:smg:fire" radius="150" static="1" />
